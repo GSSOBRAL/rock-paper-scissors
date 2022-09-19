@@ -1,9 +1,14 @@
 const randomChoice = Math.floor((Math.random()) * 3);
 
+const playerSelection = getPlayerChoice();
 const computerSelection = getComputerChoice(randomChoice);
-const playerSelection = "Rock";
 
 playRound(computerSelection, playerSelection);
+
+function getPlayerChoice(){
+    const selection = prompt("Make a choice:");
+    return selection.charAt(0).toUpperCase() + selection.slice(1).toLowerCase();
+}
 
 function getComputerChoice(computerChoice){
     let string;

@@ -1,23 +1,19 @@
-const randomChoice = Math.floor((Math.random()) * 3);
-
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice(randomChoice);
-
-playRound(computerSelection, playerSelection);
+game();
 
 function getPlayerChoice(){
     const selection = prompt("Make a choice:");
     return selection.charAt(0).toUpperCase() + selection.slice(1).toLowerCase();
 }
 
-function getComputerChoice(computerChoice){
+function getComputerChoice(){
     let string;
-    if(computerChoice === 0){
+    const randomChoice = Math.floor((Math.random()) * 3);
+    if(randomChoice === 0){
         string = "Rock";
         console.log(string);
         return string;
     }
-    else if(computerChoice === 1){
+    else if(randomChoice === 1){
         string = "Paper";
         console.log(string);
         return string;
@@ -26,6 +22,14 @@ function getComputerChoice(computerChoice){
         string = "Scissors";
         console.log(string);
         return string;
+    }
+}
+
+function game(){
+    for(let i = 0; i < 5; i++){
+        let playerSelection = getPlayerChoice();
+        let computerSelection = getComputerChoice();
+        playRound(computerSelection, playerSelection);
     }
 }
 
@@ -44,6 +48,9 @@ function playRound(computerSelection, playerSelection){
         console.log("Player wins! " + playerSelection + " beats " + computerSelection);
     else if(computerSelection === "Paper" && playerSelection === "Scissors")
         console.log("Player wins! " + playerSelection + " beats " + computerSelection);
-    else
+    else{
         console.log("Invalid Play");
+        return "Invalid";
+    }
+        
 }

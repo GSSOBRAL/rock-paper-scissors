@@ -1,11 +1,16 @@
 let playerWinCounter = 0;
 let computerWinCounter = 0;
 
-game();
+const buttons = document.querySelectorAll("button");
+buttons.forEach(getPlayerChoice);
 
-function getPlayerChoice(){
-    const selection = prompt("Make a choice:");
-    return selection.charAt(0).toUpperCase() + selection.slice(1).toLowerCase();
+//game();
+
+function getPlayerChoice(button){
+    return button.addEventListener("click", () => {
+        playRound(getComputerChoice(), button.id);
+        return button.id;
+    });
 }
 
 function getComputerChoice(){
@@ -27,7 +32,7 @@ function getComputerChoice(){
         return string;
     }
 }
-
+/*
 function game(){
     for(let i = 0; i < 5; i++){
         let playerSelection = getPlayerChoice();
@@ -41,7 +46,7 @@ function game(){
         console.log("Better luck next time! You are the Loser!")
     else
         console.log("It's a draw!")
-}
+}*/
 
 function playRound(computerSelection, playerSelection){
     if(computerSelection === playerSelection)

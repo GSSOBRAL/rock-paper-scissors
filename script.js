@@ -49,30 +49,31 @@ function game(){
 }*/
 
 function playRound(computerSelection, playerSelection){
+    const result = document.querySelector(".results");
     if(computerSelection === playerSelection)
-        console.log("It's a draw!");
+        result.textContent = "It's a draw!";
     else if(computerSelection === "Rock" && playerSelection === "Scissors"){
-        console.log("You Lose! " + computerSelection + " beats " + playerSelection);
+        result.textContent = "You Lose! " + computerSelection + " beats " + playerSelection;
         computerWinCounter++;
     }
     else if(computerSelection === "Paper" && playerSelection === "Rock"){
-        console.log("You Lose! " + computerSelection + " beats " + playerSelection);
+        result.textContent = "You Lose! " + computerSelection + " beats " + playerSelection;
         computerWinCounter++;
     }
     else if(computerSelection === "Scissors" && playerSelection === "Paper"){
-        console.log("You Lose! " + computerSelection + " beats " + playerSelection);
+        result.textContent = "You Lose! " + computerSelection + " beats " + playerSelection;
         computerWinCounter++;
     }
     else if(computerSelection === "Rock" && playerSelection === "Paper"){
-        console.log("You Win! " + playerSelection + " beats " + computerSelection);
+        result.textContent = "You Win! " + playerSelection + " beats " + computerSelection;
         playerWinCounter++;
     }
     else if(computerSelection === "Scissors" && playerSelection === "Rock"){
-        console.log("You Win! " + playerSelection + " beats " + computerSelection);
+        result.textContent = "You Win! " + playerSelection + " beats " + computerSelection;
         playerWinCounter++;
     }
     else if(computerSelection === "Paper" && playerSelection === "Scissors"){
-        console.log("You Win! " + playerSelection + " beats " + computerSelection);
+        result.textContent = "You Win! " + playerSelection + " beats " + computerSelection;
         playerWinCounter++;
     }
     else{

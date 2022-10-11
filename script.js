@@ -4,14 +4,27 @@ let computerWinCounter = 0;
 const buttons = document.querySelectorAll("button");
 buttons.forEach(getPlayerChoice);
 
+const result = document.querySelector(".results");
+
 const playerWins = document.querySelector(".player-counter");
 const computerWins = document.querySelector(".computer-counter");
+playerWins.textContent = `Player: ${playerWinCounter}`;
+computerWins.textContent = `Computer: ${computerWinCounter}`;
 //game();
 
 function getPlayerChoice(button){
     return button.addEventListener("click", () => {
-        playRound(getComputerChoice(), button.id);
-        return button.id;
+        if(playerWinCounter < 5 && computerWinCounter < 5){
+            playRound(getComputerChoice(), button.id);
+            if(playerWinCounter === 5){
+                result.textContent = "Player Wins!";
+            }
+            if(computerWinCounter === 5){
+                result.textContent = "Player Loses!";
+            }
+            return button.id;
+        }
+        
     });
 }
 
@@ -51,7 +64,6 @@ function game(){
 }*/
 
 function playRound(computerSelection, playerSelection){
-    const result = document.querySelector(".results");
     if(computerSelection === playerSelection)
         result.textContent = "It's a draw!";
     else if(computerSelection === "Rock" && playerSelection === "Scissors"){

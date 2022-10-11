@@ -4,6 +4,8 @@ let computerWinCounter = 0;
 const buttons = document.querySelectorAll("button");
 buttons.forEach(getPlayerChoice);
 
+const playerWins = document.querySelector(".player-counter");
+const computerWins = document.querySelector(".computer-counter");
 //game();
 
 function getPlayerChoice(button){
@@ -80,5 +82,6 @@ function playRound(computerSelection, playerSelection){
         console.log("Invalid Play");
         return "Invalid";
     }
-        
+    playerWins.textContent = `Player: ${playerWinCounter}`;
+    computerWins.textContent = `Computer: ${computerWinCounter}`;
 }
